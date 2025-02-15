@@ -62,7 +62,7 @@ body {
   grid-template-columns: 
     auto auto auto
   ;
-  border: 2px dashed rgb(211, 221, 224);;
+  border: 2px dashed rgb(211, 221, 224);
   border-radius: 5px;
 }
 
@@ -73,4 +73,8 @@ body {
   justify-items: center;
   align-items: baseline;
   column-gap: 10px;
+
+  &.inactive {
+    opacity: 0.5;
+  }
 }
