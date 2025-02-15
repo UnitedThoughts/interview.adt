@@ -1,24 +1,26 @@
-import DenominationStack from "./denomination_stack"
-import icons from "./icons.module.css"
-import styles from "./page.module.css";
+import type Amounts from "./amounts";
+import type DenominationStack from "./denomination_stack"
 
-const DenominationDisplay = ({denomination: denomination}: {denomination: DenominationStack}) => {
-    return (<div key={denomination.value_usd} className={`${styles.denomination_display} ${denomination.count === 0 ? 'inactive' : 'active'}`} >
-      {denomination.type === 'bill' ? (
-        <span className={ icons.bill_icon }>{denomination.value_usd}</span>
+import icons from "./icons.module.css"
+import styles from "./page.module.css"
+
+const DenominationDisplay = ({stack}: {stack: DenominationStack}) => {
+    return (<div className={`${styles.denomination_display} ${stack.count === 0 ? 'inactive' : 'active'}`} >
+      {stack.denomination.type === 'bill' ? (
+        <span className={ icons.bill_icon }>{stack.denomination.value_usd}</span>
       ) : (
-        <span className={ icons.coin_icon }>{denomination.value_usd * 100}</span>
+        <span className={ icons.coin_icon }>{stack.denomination.value_usd * 100}</span>
       )}
           x
-          <span className="count">{denomination.count}</span>
+          <span className="count">{stack.count}</span>
         </div>
     )
   }
   
-  const DenominationsList = ({change}: {change: DenominationStack[]}) => {
+  const DenominationsList = ({amounts}: {amounts: Amounts}) => {
     return (
       <div id="change-returned" className={styles.change_returned}>
-        {change.map(denomination =>  <DenominationDisplay key={denomination.value_usd} denomination={denomination}/>)
+        {amounts.stacks.map(stack =>  <DenominationDisplay key={stack.denomination.value_usd} stack={stack}/>)
         }
       </div>
     )
