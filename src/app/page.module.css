@@ -1,4 +1,4 @@
-.page {
+body {
   --gray-rgb: 0, 0, 0;
   --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
   --gray-alpha-100: rgba(var(--gray-rgb), 0.05);
@@ -7,17 +7,14 @@
   --button-secondary-hover: #f2f2f2;
 
   display: grid;
-  grid-template-rows: 20px 1fr 20px;
   align-items: center;
   justify-items: center;
   min-height: 100svh;
-  padding: 80px;
-  gap: 64px;
   font-family: var(--font-geist-sans);
 }
 
 @media (prefers-color-scheme: dark) {
-  .page {
+  body {
     --gray-rgb: 255, 255, 255;
     --gray-alpha-200: rgba(var(--gray-rgb), 0.145);
     --gray-alpha-100: rgba(var(--gray-rgb), 0.06);
@@ -28,15 +25,52 @@
 }
 
 .main {
+  display: grid;  
+  grid-template: 
+    "amounts change_returned"
+  ;
+  row-gap: 5px;
+  padding: 30px;
+  column-gap: 12px;
+}
+
+.amounts {
   display: grid;
-  
+  background-color: rgb(234, 243, 246);
+  border-radius: 5px;
   row-gap: 5px;
   grid-auto-flow: row;
   max-width: 300px;
   padding: 30px;
+  grid-area: amounts;
+  align-content: center;
+
+  input[type="number"] {
+    font-size: 120%;
+    text-align: right;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    border: none;
+    border-bottom: 1px solid rgb(108, 137, 146);
+  }
 }
 
 .change_returned {
   display: grid;
   gap: 5px;
+  padding: 10px;
+  grid-area: change_returned;
+  grid-template-columns: 
+    auto auto auto
+  ;
+  border: 2px dashed rgb(211, 221, 224);;
+  border-radius: 5px;
+}
+
+.denomination_display {
+  display: grid;
+  grid-column: 1/4;
+  grid-template-columns: subgrid;
+  justify-items: center;
+  align-items: baseline;
+  column-gap: 10px;
 }
