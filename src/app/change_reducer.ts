@@ -1,7 +1,6 @@
 import Amounts from "./amounts"
-import type Denomination from "./denomination"
-import type DenominationStack from "./denomination_stack"
-import denominations from "./denominations"
+import make_change from "./make_change"
+import round_to_nearest_cent from "./round_to_nearest_cent"
 
 export default (old_amounts: Amounts, action: {type: string, value: number}) => {
     let new_amounts: Amounts = {
@@ -14,11 +13,11 @@ export default (old_amounts: Amounts, action: {type: string, value: number}) => 
 
     switch(action.type){
       case 'change:cost': {
-        new_amounts.totalCostUSD = action.value
+        new_amounts.totalCostUSD = round_to_nearest_cent(action.value)
         break
       }
       case 'change:amount_provided': {
-        new_amounts.amountProvidedUSD = action.value
+        new_amounts.amountProvidedUSD = round_to_nearest_cent(action.value)
         break
       }
       default: {
@@ -26,35 +25,14 @@ export default (old_amounts: Amounts, action: {type: string, value: number}) => 
       }
     }
 
-    new_amounts.changeOwedUSD = new_amounts.amountProvidedUSD - new_amounts.totalCostUSD
+    // CAUTION: JS's IEEE764 floating point may lead to odd fractional remainders of operations. Hence the rounding.
+    new_amounts.changeOwedUSD = round_to_nearest_cent(new_amounts.amountProvidedUSD - new_amounts.totalCostUSD)
 
-    let change_remaining = new_amounts.changeOwedUSD
-
-    while(change_remaining > 0){
-      let largest_denomination: Denomination | null = null
-      
-      for (let denomination of denominations){
-        if(denomination.value_usd <= change_remaining && (!largest_denomination || denomination.value_usd > largest_denomination?.value_usd)){
-          largest_denomination = denomination
-        }
-      }
-      
-      if(!largest_denomination){
-        new_amounts.valid = false
-        break
-      }
-
-      let existing_stack: DenominationStack | undefined = new_amounts.stacks.find((stack) => stack.denomination.value_usd === largest_denomination.value_usd)
-      if(!existing_stack){
-        existing_stack = {count: 0, denomination: largest_denomination}
-        new_amounts.stacks.push(existing_stack)
-      }
-
-      existing_stack.count += 1
-      change_remaining -= largest_denomination.value_usd
+    let change_stacks = make_change(new_amounts.changeOwedUSD)
+    if(change_stacks){
+      new_amounts.stacks = change_stacks
+    } else {
+      new_amounts.valid = false
     }
-
-    new_amounts.valid = true
-
     return new_amounts
   }
