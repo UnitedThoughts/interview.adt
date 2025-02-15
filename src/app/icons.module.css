@@ -1,0 +1,44 @@
+.coin_icon {
+    border-radius: 1000000px;
+    background-color: gold;
+    border: 2px solid goldenrod;
+    color: rgb(150, 113, 19);
+    display: block;
+
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+
+    font-weight: 400;
+    font-variant: normal;
+    font-family: var(--font-noto-serif);
+    box-shadow: 1px 1px 3px #acabab;
+    justify-self: center;
+
+    &::after {
+        content: "¢";
+    }
+}
+
+.bill_icon {
+    border-radius: 3px;
+    background-color:  rgb(193, 221, 193);
+    border: 2px solid rgb(150, 173, 150);
+    color:  rgb(97, 126, 97);
+    display: block;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+
+    font-weight: 400;
+    font-variant: normal;
+    font-family: var(--font-noto-serif);
+    box-shadow: 1px 1px 3px #acabab;
+    justify-self: center;
+
+    &::before {
+        content: "$";
+    }
+}
