@@ -45,3 +45,18 @@
         content: "$";
     }
 }
+
+@media (prefers-color-scheme: dark) {
+    .coin_icon {
+        box-shadow: none;
+        border: 2px solid rgb(171, 134, 41);
+
+    }
+
+    .bill_icon {
+        box-shadow: none;
+        border-color: rgb(74, 144, 74);
+        background-color:  rgb(138, 190, 138);
+
+    }
+}
