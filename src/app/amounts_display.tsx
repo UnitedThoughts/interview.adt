@@ -1,7 +1,7 @@
 import styles from "./page.module.css";
 import type Amounts from "./amounts"
 
-export default ({amounts: amounts, dispatch: dispatch}: {amounts: Amounts, dispatch: any}) => {
+export default ({amounts, dispatch}: {amounts: Amounts, dispatch: any}) => {
     return <div className={styles.amounts}>
       <label htmlFor="total_cost_usd">Total Cost</label>
       <input type="number" placeholder="USD" id="total_cost_usd" value={amounts.totalCostUSD} onChange={(e) => dispatch({type: 'change:cost', value: Number(e.target.value)})}/>

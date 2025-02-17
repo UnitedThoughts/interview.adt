@@ -99,3 +99,26 @@ body {
     border-color: rgb(38, 38, 38);
   }
 }
+
+.current_purchase_name {
+  /* font-size: 120%; */
+  padding: 5px;
+  /* font-family: Georgia, 'Times New Roman', Times, serif; */
+}
+
+.save_purchase_button {
+  /* font-size: 120%; */
+  padding: 5px;
+}
+
+.previous_purchases {
+  display: grid;
+  row-gap: 10px;
+}
+
+.purchase {
+  
+  .purchase_name {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+}
