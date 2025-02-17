@@ -10,6 +10,6 @@ export default ({amounts: amounts, dispatch: dispatch}: {amounts: Amounts, dispa
       <input type="number" placeholder="USD" id="amount_provided_usd" value={amounts.amountProvidedUSD} onChange={(e) => dispatch({type: 'change:amount_provided', value: Number(e.target.value)})}/>
     
       <span>Change Owed</span>
-      <span>{amounts.changeOwedUSD}</span>
+      <span className={styles.change_owed}>{amounts.changeOwedUSD}</span>
     </div>
   }

@@ -48,7 +48,7 @@ body {
   input[type="number"] {
     font-size: 120%;
     text-align: right;
-    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     border: none;
     border-bottom: 1px solid rgb(108, 137, 146);
   }
@@ -77,4 +77,12 @@ body {
   &.inactive {
     opacity: 0.5;
   }
+}
+
+.change_owed {
+  font-family:  Georgia, 'Times New Roman', Times, serif;
+  text-align: right;
+  background-color:rgb(211, 221, 224);
+  font-size: 120%;
+
 }
