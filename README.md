@@ -1,12 +1,14 @@
 Welcome to ChangeApp - Be the change you want to see in the world!
 
-This solution has two versions: the `ui_app` and the `node_api`
+This solution has two versions: the `ui_app` and the `node_api`.
 
 # ui_app
 
 This is a fully client-side React + Next.js app. It calculates the change due for a given purchase, and optionally stores a list of past purchases.
 
-The app is powered by the `wind-of-change` library for making change.
+The app is powered by the `wind-of-change` library for making change. 
+
+(All commands are ran from within the `ui_app` folder.)
 
 ## Starting the dev server
 
@@ -18,14 +20,23 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to open the app.
 
+## Building
 To build, run 
 ```
 npm run build
 ```
 
+## Testing
+To run the test suite, run
+```
+npm test
+```
+
 # node_api
 
-This is a simple express-based node.js HTTP API wrapper around the `wind-of-change` library for making change for a given amount
+This is a simple express-based node.js HTTP API wrapper around the `wind-of-change` library for making change for a given amount.
+
+(All commands are ran from within the `ui_app` folder.)
 
 ## Starting the server
 
@@ -138,6 +149,12 @@ const change = make_change(14.73)
         }
     }
 ]
+```
+
+## Testing
+To run the test suite, run
+```
+npm test
 ```
 
 ## Configuration
