@@ -1,0 +1,19 @@
+{
+  "name": "change-api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "npx tsc",
+    "start": "node dist/index.js",
+    "test": "node test/main.js"
+  },
+  "dependencies": {
+    "@types/node": "^22.13.4",
+    "@unitedthoughts/wind-of-change": "^0.3.0",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.3"
+  }
+}

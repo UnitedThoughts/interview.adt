@@ -1,0 +1,26 @@
+{
+    "name": "@unitedthoughts/wind-of-change",
+    "version": "0.3.0",
+    "publishConfig": {
+        "registry": "https://npm.pkg.github.com/"
+    },
+    "type": "module",
+    "scripts": {
+        "build": "tsc",
+        "test": "node test/main.js"
+    },
+    "devDependencies": {
+        "typescript": "^5.7.3"
+    },
+    "main": "./dist/index.js",
+    "files": [
+        "dist/**/*"
+    ],
+    "exports": {
+        ".": {
+            "require": "./dist/index.js",
+            "import": "./dist/index.js",
+            "types": "./dist/index.d.ts"
+        }
+    }
+}
